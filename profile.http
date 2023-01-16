@@ -1,0 +1,7 @@
+POST http://localhost:3000/shifts/add
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsImVtYWlsIjoibmV0bGV5QGdtYWlsLmNvbSIsInJvbGUiOiJIT01FIiwiaWF0IjoxNjczOTA0OTQwLCJleHAiOjE2NzM5OTEzNDB9.uOm8TrR2-c-9viBV6peqpAaOZpiT2lTMudiPC9rZDns
+
+{
+    
+}
