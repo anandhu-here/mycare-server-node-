@@ -31,7 +31,10 @@ const signup = async ( req, res, next ) =>{
 
 const isAuth = async (req, res, next) =>{
     try{
-        const {id, email} = verifyToken(req.headers.authorization);
+        const t = req.headers.authorization;
+        const token = t.split(" ").length>1?t.split(" ")[1]:t.split(" ")[0];
+        console.log(token, "hello")
+        const {id, email} = verifyToken(token);
         next();
     }
     catch(e){
@@ -40,8 +43,10 @@ const isAuth = async (req, res, next) =>{
 }
 const isHome = async (req, res, next) =>{
     try{
-        const {id, email, role} = verifyToken(req.headers.authorization);
-        console.log(role, "fuck")
+        const t = req.headers.authorization;
+        const token = t.split(" ").length>1?t.split(" ")[1]:t.split(" ")[0];
+        const {id, email, role} = verifyToken(token);
+        
         if(role === 'HOME'){
             next();
         }

@@ -1,18 +1,40 @@
-# POST http://localhost:3000/shifts/add
-# Content-Type: application/json
-# Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsImVtYWlsIjoibmV0bGV5QGdtYWlsLmNvbSIsInJvbGUiOiJIT01FIiwiaWF0IjoxNjczOTA1NDY3LCJleHAiOjE2NzM5OTE4Njd9.YnDdEImItKRpRdT8_8-mv6SkneW8e05O-jwVEVw-b5A
-
-# {
-#     "day":21,
-#     "month":1,
-#     "year":2023,
-#     "longday":2,
-#     "night":0,
-#     "late":2,
-#     "early":3
-# }
-
-GET http://localhost:3000/shifts/list/home
+POST http://localhost:3000/shifts/add/bulk
+Content-Type: application/json
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsImVtYWlsIjoibmV0bGV5QGdtYWlsLmNvbSIsInJvbGUiOiJIT01FIiwiaWF0IjoxNjczOTA1NDY3LCJleHAiOjE2NzM5OTE4Njd9.YnDdEImItKRpRdT8_8-mv6SkneW8e05O-jwVEVw-b5A
+
+{
+    "shifts":[
+        {
+            "day":23,
+            "month":1,
+            "year":2023,
+            "longday":2,
+            "night":0,
+            "late":2,
+            "early":3
+        },
+        {
+            "day":24,
+            "month":1,
+            "year":2023,
+            "longday":2,
+            "night":0,
+            "late":2,
+            "early":3
+        },
+        {
+            "day":25,
+            "month":1,
+            "year":2023,
+            "longday":2,
+            "night":0,
+            "late":2,
+            "early":3
+        }
+    ]
+}
+
+# GET http://localhost:3000/shifts/list/home
+# Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsImVtYWlsIjoibmV0bGV5QGdtYWlsLmNvbSIsInJvbGUiOiJIT01FIiwiaWF0IjoxNjczOTA1NDY3LCJleHAiOjE2NzM5OTE4Njd9.YnDdEImItKRpRdT8_8-mv6SkneW8e05O-jwVEVw-b5A
 
 

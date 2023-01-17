@@ -10,7 +10,7 @@ const createToken = ({ id, email, role }) =>{
 }
 
 const verifyToken = (token) =>{
-    const decoded = jwt.verify(token, process.env.JWT_SECRET, {expiresIn:'24h'})
+    const decoded = jwt.verify(token, process.env.JWT_SECRET, {expiresIn:'24h'});
     return decoded;
 }
 

@@ -1,5 +1,6 @@
 const { verifyToken } = require("../controller/util");
 const { isAuth, isHome } = require("../middlewares/auth");
+const shift = require("../models/shift");
 
 module.exports = (app, db) =>{
     app.post('/shifts/add', isAuth, async(req, res)=>{
@@ -33,13 +34,30 @@ module.exports = (app, db) =>{
         }
         
     })
+    app.post('/shifts/add/bulk', isHome, async(req, res)=>{
+        const token = req.headers.authorization;
+        const {id} = verifyToken(token);
+        const {shifts} = req.body;
+        db.Home.findOne({where:{userId:id}}).then(home=>{
+            db.Shift.bulkCreate(shifts).then(shifts=>{
+                home.addShifts(shifts);
+                res.status(201).send(shifts)
+            }).catch(e=>{
+                res.status(400).send({error:e.message})
+            })
+        }).catch(e=>{
+            res.status(400).send({error:e.message})
+        })
+    })
     app.get('/shifts/list/home', isAuth, async(req, res)=>{
         const token = req.headers.authorization;
+        const { month } = req.query;
+        console.log(month, "fucnking month")
         const {id} = verifyToken(token)
         try{
             const home = await db.Home.findOne({where:{userId:id}});
             if(home){
-                db.Shift.findAll({where:{home_id:home.id}}).then(shifts=>{
+                db.Shift.findAll({where:{home_id:home.id, month:month}}).then(shifts=>{
                     res.status(200).send(shifts);
                 }).catch(e=>{
                     console.log(e);
