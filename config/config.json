@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "postgres",
-    "password": "000",
-    "database": "mdb",
+    "password": "blackbird",
+    "database": "mydb",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },

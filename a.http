@@ -1,8 +1,16 @@
-POST http://localhost:3000/login
+# POST http://localhost:3000/signup
+# Content-Type: application/json
+
+# {
+#     "email":"anki@gmail.com",
+#     "password":"blackbird",
+#     "role":"CARER"
+# }
+POST http://localhost:3000/update/profile
 Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZW1haWwiOiJhbmtpQGdtYWlsLmNvbSIsInJvbGUiOiJDQVJFUiIsImlhdCI6MTY3NDMzMTE4MywiZXhwIjoxNjc0NDE3NTgzfQ.IjRKd68BzEH5DA-QraetRz4FdTEbHhXoHeMdfZ6oFQk"
 
 {
-    "email":"netley@gmail.com",
-    "password":"blackbird",
-    "role":"HOME"
+    "firstName":"Ankitha",
+    "lastName":"Sreekumar"
 }

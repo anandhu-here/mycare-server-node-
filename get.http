@@ -1,1 +1,2 @@
-GET http://localhost:3000/user?email=joyal@gmail.com
+GET http://localhost:3000/shifts/list/home?month=1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJuZXRsZXlAZ21haWwuY29tIiwicm9sZSI6IkhPTUUiLCJpYXQiOjE2NzQzNDUwNTksImV4cCI6MTY3NDQzMTQ1OX0.RwQdfspCe9N-a2l-ynyo5yvRo98W0CFve3q2E1Fx4Vg

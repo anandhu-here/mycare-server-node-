@@ -3,17 +3,15 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    return Promise.all([
-      queryInterface.addColumn('Shifts', 'home_id', {
-        type:Sequelize.INTEGER,
+    return queryInterface.changeColumn('Assigneds', 'shiftId', {
+      type:Sequelize.INTEGER,
         references:{
-          model:'Homes',
-          key:'id'
+          model:'Shifts',
+          id:'id'
         },
         onDelete:'CASCADE',
-        onUpdate:'CASCADE'
-      })
-    ])
+        onUpdate:"CASCADE"
+    })
     /**
      * Add altering commands here.
      *

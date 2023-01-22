@@ -17,6 +17,16 @@ module.exports = (sequelize, DataTypes) => {
           name:'userId'
         }
       })
+      Carer.hasMany(models.Assigned, {
+        as:'ass',
+        foreignKey:'carerId'
+      })
+      Carer.hasMany(models.Timesheet, {
+        as:'timesheet',
+        foreignKey:{
+          name:"carerId"
+        }
+      })
     }
   }
   Carer.init({

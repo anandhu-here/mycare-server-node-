@@ -3,19 +3,19 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    return queryInterface.addColumn(
-      'Carers',
-      'userId',
-      {
-        type:Sequelize.INTEGER,
-        references:{
-          model:'Users',
-          key:'id',
-        },
-        onDelete:'CASCADE',
-        onUpdate: 'CASCADE'
-      }
-    )
+    // return queryInterface.addColumn(
+    //   'Carers',
+    //   'userId',
+    //   {
+    //     type:Sequelize.INTEGER,
+    //     references:{
+    //       model:'Users',
+    //       key:'id',
+    //     },
+    //     onDelete:'CASCADE',
+    //     onUpdate: 'CASCADE'
+    //   }
+    // )
     /**
      * Add altering commands here.
      *

@@ -3,15 +3,24 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    // return queryInterface.addColumn('Homes', 'userId', {
-    //   type:Sequelize.INTEGER,
-    //   references:{
-    //     model:'Users',
-    //     key:'id',
-    //   },
-    //   onDelete:'CASCADE',
-    //   onUpdate: 'CASCADE'
-    // })
+    return Promise.all([
+      queryInterface.addColumn('Timesheets', 'signId', {
+        type:Sequelize.INTEGER,
+        references:{
+          model:'Signatures',
+          key:'id'
+        },
+        onDelete:"cascade"
+      }),
+      queryInterface.addColumn('Signatures', 'authId', {
+        type:Sequelize.INTEGER,
+        references:{
+          model:'HomeAuths',
+          key:'id'
+        },
+        onDelete:"cascade"
+      })
+    ])
     /**
      * Add altering commands here.
      *
@@ -21,7 +30,6 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-    return queryInterface.removeColumn('Homes', 'userId')
     /**
      * Add reverting commands here.
      *

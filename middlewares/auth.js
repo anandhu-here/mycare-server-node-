@@ -41,6 +41,23 @@ const isAuth = async (req, res, next) =>{
         return res.status(400).send({error:'Unauthorized'})
     }
 }
+const isAdmin = async (req, res, next) =>{
+    try{
+        const t = req.headers.authorization;
+        const token = t.split(" ").length>1?t.split(" ")[1]:t.split(" ")[0];
+        const {id, email, role} = verifyToken(token);
+        if(role === 'ADMIN'){
+            next();
+        }
+        else{
+            return res.status(400).send({error:'Unauthorized'})
+        }
+        next();
+    }
+    catch(e){
+        return res.status(400).send({error:'Unauthorized'})
+    }
+}
 const isHome = async (req, res, next) =>{
     try{
         const t = req.headers.authorization;
@@ -59,4 +76,4 @@ const isHome = async (req, res, next) =>{
     }
 }
 
-module.exports = { login, signup, isAuth, isHome }
+module.exports = { login, signup, isAuth, isHome, isAdmin }

@@ -1,7 +1,10 @@
-POST http://localhost:3000/shifts/add
+POST http://localhost:3000/update/profile
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsImVtYWlsIjoibmV0bGV5QGdtYWlsLmNvbSIsInJvbGUiOiJIT01FIiwiaWF0IjoxNjczOTA0OTQwLCJleHAiOjE2NzM5OTEzNDB9.uOm8TrR2-c-9viBV6peqpAaOZpiT2lTMudiPC9rZDns
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJuZXRsZXlAZ21haWwuY29tIiwicm9sZSI6IkhPTUUiLCJpYXQiOjE2NzQzNDYxMTMsImV4cCI6MTY3NDQzMjUxM30.W_3VtfKfNDIMBMog5liFtDjFZTklP2Ffn_a5O2EFErU
 
 {
-    
+    "company":"Netley Care",
+    "adress1":"20 Columbia Lodge",
+    "postcode":"SO167QL",
+    "city":"Southampton"
 }

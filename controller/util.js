@@ -22,5 +22,35 @@ const hashPassword = (password) =>{
 const comparePassord = (password, hash) => bcpt.compareSync(password, hash);
 
 
-module.exports = { createToken, verifyToken, hashPassword, comparePassord }
+
+const checkShiftAssign = (shift, carers) =>{
+    const {longday, night, early, late} = shift;
+    if(longday + night + early + late < carers.length){
+        return {error:"Too many assignments", status:1};
+    }
+
+    var data = {longday:0, night:0, late:0, early:0};
+
+    carers.map(c=>{
+        data[c.type] += 1;
+
+    })
+    console.log(data, "data", longday, night)
+    if(data["longday"] > longday){
+        return {error:"Too many longday assignments", status:1};
+    }
+    if(data["night"] > night){
+        return {error:"Too many night assignments", status:1};
+    }
+    if(data["early"] > early){
+        return {error:"Too many early assignments", status:1};
+    }
+    if(data["late"] > late){
+        return {error:"Too many late assignments", status:1};
+    }
+    return { error:"NULL", status:0 }
+
+}
+
+module.exports = { createToken, verifyToken, hashPassword, comparePassord, checkShiftAssign }
 

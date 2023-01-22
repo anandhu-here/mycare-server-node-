@@ -1,5 +1,5 @@
 const { hashPassword, createToken, comparePassord, verifyToken } = require("../../controller/util");
-const { login, signup } = require("../../middlewares/auth");
+const { login, signup, isAdmin } = require("../../middlewares/auth");
 
 
 module.exports = (app, db) => {
@@ -49,7 +49,10 @@ module.exports = (app, db) => {
     })
     app.post('/login', login, (req, res)=>{
         const { email, password } = req.body;
-        db.User.findOne({where:{email}}).then(user=>{
+        db.User.findOne({where:{email}, include:[{
+            model:db.Carer,
+            as:'carer'
+        }]}).then(user=>{
             if(user && comparePassord(password, user.password) ){
                 const token = createToken(user);
                 res.status(200).send({
@@ -64,6 +67,15 @@ module.exports = (app, db) => {
             res.status(400).send({error:'Login error try again'})
         })
         
+    })
+    app.get('/get/carers', isAdmin, async(req, res)=>{
+        try{
+            const carers = await db.Carer.findAll();
+            res.status(200).send(carers);
+        }
+        catch(e){
+            res.status(500).send({error:e.message})
+        }
     })
     app.post('/delete', async (req, res)=>{
         const {email} = req.body;

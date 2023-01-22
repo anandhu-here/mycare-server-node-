@@ -17,6 +17,19 @@ module.exports = (sequelize, DataTypes) => {
           name:'home_id'
         }
       })
+      Shift.hasMany(models.Assigned, {
+        as:'ass',
+        foreignKey:'shiftId',
+        onDelete:'cascade',
+        onUpdate:"cascade"
+      })
+      Shift.hasMany(models.Timesheet, {
+        as:'sheets',
+        foreignKey:{
+          name:'shiftId'
+        },
+        onDelete:"CASCADE"
+      })
     }
   }
   Shift.init({
